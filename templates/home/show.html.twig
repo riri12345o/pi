@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Home</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdHome</th>
+                <td>{{ home.idHome }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ home.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Disponibilite</th>
+                <td>{{ home.disponibilite }}</td>
+            </tr>
+            <tr>
+                <th>Designation</th>
+                <td>{{ home.designation }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ home.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_home_index') }}">back to list</a>
+
+    <a href="{{ path('app_home_edit', {'idHome': home.idHome}) }}">edit</a>
+
+    {{ include('home/_delete_form.html.twig') }}
+{% endblock %}

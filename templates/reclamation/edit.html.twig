@@ -1,0 +1,29 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Edit Reclamation{% endblock %}
+
+{% block body %}
+    {{ form_start(form)}}
+    <div class="input-group input-group-outline my-3">
+
+        {{ form_widget(form.sujet, { 'attr': {'class':'form-control', 'placeholder': 'Sujet'}}) }}<br>
+        {{ form_errors(form.sujet) }}<br>
+    </div>
+    <div class="input-group input-group-outline my-3">
+        {{ form_widget(form.contenue, { 'attr': {'class':'form-control', 'placeholder': 'Contenue'}}) }}<br>
+        {{ form_errors(form.contenue) }}<br>
+    </div>
+    <div class="input-group input-group-outline my-3">
+        {{ form_widget(form.file, { 'attr': {'class':'form-control', 'placeholder': 'File'}}) }}<br>
+        {{ form_errors(form.file) }}<br>
+    </div>
+    <div class="input-group input-group-outline my-3">
+        {{ form_widget(form.type, { 'attr': {'class':'form-control', 'placeholder': 'Type'}}) }}<br>
+        {{ form_errors(form.type) }}<br>
+    </div>
+    <button type="submit" class=" btn btn-primary" style="text-align: center !important;" formnovalidate >Ajouter</button>
+    </div>
+
+
+    {{ form_end(form)}}
+{% endblock %}

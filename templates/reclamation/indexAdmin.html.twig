@@ -1,0 +1,46 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Sujet</th>
+            <th>Contenue</th>
+            <th>User</th>
+            <th>dateenv</th>
+            <th>Image</th>
+            <th>Etat</th>
+            <th>Type</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for r in reclamations %}
+            <tr>
+                <td>{{ r.sujet }}</td>
+                <td>{{ r.contenue }}</td>
+                <td>{{ r.idUser.nom }}</td>
+                <td>{{ r.dateenv ? r.dateenv|date('Y-m-d') : '' }}</td>
+                <td><img src="{{ asset('Upload/')}}{{ r.image }}" width="100" class="img-circle" /></td>
+                <td>{{ r.etat }}</td>
+                <td>{{ r.type }}</td>
+                <td>
+                    {% if r.etat == "en attente" %}
+                    <a class="btn btn-danger" href="{{ path('app_reclamation_showRecbyId', {'id': r.idReclamation}) }}">Repondre</a>
+                   {% else %}
+                    <a class="btn btn-primary" href="{{ path('app_reclamation_showRecbyId', {'id': r.idReclamation}) }}">Consulter</a>
+                  {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

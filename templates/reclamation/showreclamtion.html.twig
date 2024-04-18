@@ -1,0 +1,55 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+{% block body %}
+    <style>
+        hr {
+            border: 1px solid black; /* Couleur de la ligne */
+            margin-top: 20px; /* Marge au-dessus de la ligne */
+            margin-bottom: 20px; /* Marge en dessous de la ligne */
+        }
+    </style>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p class="mb-0">
+                <img src="{{ asset('Upload/')}}{{ r.image }}" width="600" /><br><br>
+                Sujet : {{ r.sujet }}<br>
+              Contenue :  {{ r.contenue }}<br>
+               User :  {{ r.idUser.nom }}<br>
+              Date :  {{ r.dateenv ? r.dateenv|date('Y-m-d') : '' }}<br>
+            Etat :{{ r.etat }}<br>
+           Type: {{ r.type }}<br>
+            </p>
+        </div>
+
+        {% if r.etat == "en attente" %}
+            <div class="card-body">
+                {{ form_start(form)}}
+                <div class="input-group input-group-outline my-3">
+
+                    {{ form_widget(form.contenue, { 'attr': {'class':'form-control', 'placeholder': 'Repondre'}}) }}<br>
+                    {{ form_errors(form.contenue) }}<br>
+                </div>
+                <button type="submit" class="btn btn-primary" style="text-align: center !important;" formnovalidate>Ajouter</button>
+            </div>
+
+
+            {{ form_end(form)}}
+            </div>
+        {% else %}
+            <p>------------------------------------------------------</p>
+
+            Reponse :
+            <p class="mb-0">
+                Date :  {{ reps.date ? reps.date|date('Y-m-d') : '' }}<br>
+                Type: {{ reps.contenue }}<br>
+            </p>
+            <a class="btn btn-danger" href="{{ path('editrep', {'idReponse': reps.idReponse,'idr': r.idReclamation}) }}">Modifier Reponse</a>
+
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}

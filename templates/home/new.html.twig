@@ -1,0 +1,30 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}New Home{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form)}}
+    <div class="input-group input-group-outline my-3">
+
+        {{ form_widget(form.adresse, { 'attr': {'class':'form-control', 'placeholder': 'Adresse'}}) }}<br>
+        {{ form_errors(form.adresse) }}<br>
+    </div>
+    <div class="input-group input-group-outline my-3">
+        {{ form_widget(form.disponibilite, { 'attr': {'class':'form-control', 'placeholder': 'Disponibilite'}}) }}<br>
+        {{ form_errors(form.disponibilite) }}<br>
+    </div>
+    <div class="input-group input-group-outline my-3">
+        {{ form_widget(form.designation, { 'attr': {'class':'form-control', 'placeholder': 'Designation'}}) }}<br>
+        {{ form_errors(form.designation) }}<br>
+    </div>
+    <div class="input-group input-group-outline my-3">
+        {{ form_widget(form.file, { 'attr': {'class':'form-control', 'placeholder': 'File'}}) }}<br>
+        {{ form_errors(form.file) }}<br>
+    </div>
+        <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2" style="text-align: center !important;" formnovalidate>Ajouter</button>
+    </div>
+
+
+    {{ form_end(form)}}
+{% endblock %}
